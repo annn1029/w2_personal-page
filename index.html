@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yian Chen (陳奕安) 的個人極簡首頁與時間中心 - 整合高精即時時鐘、番茄鐘專注計時器與跨時區會議換算工具。">
+  <meta name="keywords" content="Yian Chen, 陳奕安, 個人主頁, 即時時鐘, 番茄鐘, 時區換算器, Web 開發">
+  <meta name="author" content="Yian Chen">
+  <meta property="og:title" content="Yian Chen | 個人首頁與即時時間中心">
+  <meta property="og:description" content="Yian Chen 的極簡個人首頁，集成本地高精時鐘、專注計時與世界時區工具。">
+  <meta property="og:type" content="website">
+  <title>Yian Chen | 個人首頁與即時時間中心</title>
+  
+  <!-- Google Fonts: JetBrains Mono, Noto Sans TC, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 背景氛圍光暈與科技網格 -->
+  <div class="glow-orb orb-primary" aria-hidden="true"></div>
+  <div class="glow-orb orb-secondary" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- 頂部精簡狀態導覽列 -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <div class="brand-logo" id="brand-logo">
+        <span class="logo-symbol">⚡</span>
+        <span class="logo-text">Yian Chen</span>
+      </div>
+
+      <!-- 頂部即時時鐘與主題開關 -->
+      <div class="header-metadata" id="header-metadata">
+        <div class="file-badge" id="file-badge-container" title="當前載入檔案">
+          <span class="badge-icon">📄</span>
+          <code class="file-name-text" id="header-filename">index.html</code>
+          <button class="copy-btn" id="copy-file-btn" aria-label="複製檔案名稱" title="點擊複製檔案名稱">
+            <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span class="copy-tooltip" id="copy-tooltip">已複製！</span>
+          </button>
+        </div>
+
+        <div class="live-clock-pill" id="header-clock-pill" title="本地即時時間">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span class="header-time-val" id="header-live-time">--:--:--</span>
+        </div>
+
+        <button class="theme-switch" id="theme-toggle-btn" aria-label="切換視覺主題" title="切換極光/深空風格">
+          <span class="theme-icon" id="theme-icon">🔮</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Bento Grid 核心佈局 -->
+  <main class="main-layout bento-layout" id="main-content">
+    
+    <!-- 左側欄位：Yian Chen 個人極簡卡片 -->
+    <aside class="bento-profile-card glass-panel" id="profile-card">
+      <div class="profile-avatar-block">
+        <div class="avatar-wrapper">
+          <img src="avatar.jpg" alt="Yian Chen 個人頭像" class="profile-avatar" id="profile-avatar" width="130" height="130">
+          <span class="status-indicator-badge" title="即時在線">
+            <span class="ping-ring"></span>
+            <span class="status-dot"></span>
+            在線
+          </span>
+        </div>
+      </div>
+
+      <div class="profile-text-block">
+        <div class="profile-meta-tags">
+          <span class="role-badge">Creative Technologist</span>
+          <span class="location-badge">📍 臺灣 / UTC+8</span>
+        </div>
+        <h1 class="profile-name" id="profile-heading">Yian Chen</h1>
+        <div class="profile-subtitle">陳奕安</div>
+        <p class="profile-bio">
+          專注於現代 Web 開發、即時高精系統與極簡人機介面。熱衷於將複雜數據轉化為純粹、流暢的互動體驗。
+        </p>
+      </div>
+
+      <!-- 快速聯繫與社群捷徑 -->
+      <div class="profile-actions-block">
+        <a href="mailto:yianchen.dev@gmail.com" class="btn btn-primary btn-block" id="email-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>yianchen.dev@gmail.com</span>
+        </a>
+
+        <div class="profile-social-grid">
+          <a href="https://github.com/annn1029/w2_personal-page" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub 專案倉庫">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 系統精簡資訊 -->
+      <div class="profile-system-foot">
+        <div class="system-meta-item">
+          <span class="meta-sub">當前主機路徑</span>
+          <code class="meta-val-code" id="doc-full-path">index.html</code>
+        </div>
+        <div class="system-ping-row">
+          <button class="btn btn-secondary btn-sm" id="ping-alert-btn">
+            <span>連線 Ping 訊號</span>
+            <span class="ping-count" id="ping-count">0</span>
+          </button>
+          <span class="sys-state-dot" title="系統運作中">● 在線運行</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右側欄位：時間核心工具中心 (Time Utility Hub) -->
+    <section class="bento-utility-card glass-panel" id="time-utility-hub">
+      
+      <!-- 頂部分頁導覽列 -->
+      <div class="utility-nav-bar">
+        <div class="utility-tabs" role="tablist">
+          <button class="tab-btn active" id="tab-clock-btn" data-target="panel-clock" role="tab" aria-selected="true">
+            <span class="tab-icon">⏱️</span>
+            <span>即時時鐘</span>
+          </button>
+          <button class="tab-btn" id="tab-pomodoro-btn" data-target="panel-pomodoro" role="tab" aria-selected="false">
+            <span class="tab-icon">🍅</span>
+            <span>番茄鐘專注</span>
+          </button>
+          <button class="tab-btn" id="tab-planner-btn" data-target="panel-planner" role="tab" aria-selected="false">
+            <span class="tab-icon">🌐</span>
+            <span>時區會議換算</span>
+          </button>
+        </div>
+
+        <div class="utility-audio-badge" id="audio-toggle-badge" title="Web Audio API 提示音狀態">
+          <span class="audio-icon">🔔</span>
+          <span class="audio-status-text" id="audio-state-text">提示音就緒</span>
+        </div>
+      </div>
+
+      <!-- 分頁內容容器 -->
+      <div class="utility-content-wrapper">
+        
+        <!-- Tab 1: 即時高精時鐘面板 (Live Chronometer) -->
+        <div class="tab-panel active" id="panel-clock" role="tabpanel">
+          <div class="clock-panel-header">
+            <div class="panel-tagline">
+              <span class="live-pill active pulse">即時高精同步中</span>
+              <span class="date-chip" id="date-string">2026年9月16日 星期三</span>
+              <span class="date-chip en" id="en-date-string">Wednesday, Sep 16, 2026</span>
+            </div>
+
+            <div class="clock-controls-cluster">
+              <div class="segmented-control" id="time-format-toggle" role="group">
+                <button class="segment-btn active" id="btn-format-24h" data-format="24h">24H</button>
+                <button class="segment-btn" id="btn-format-12h" data-format="12h">12H</button>
+              </div>
+              <div class="segmented-control" id="second-mode-toggle" role="group">
+                <button class="segment-btn active" id="btn-mode-smooth" data-mode="smooth" title="平滑滑動秒針">平滑</button>
+                <button class="segment-btn" id="btn-mode-tick" data-mode="tick" title="精準跳秒">跳秒</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 雙核心時鐘：類比錶盤 + 數位大字 -->
+          <div class="clock-dual-core">
+            <!-- 類比 SVG 錶盤 -->
+            <div class="analog-clock-container" title="類比錶盤即時運轉">
+              <svg class="analog-dial-svg" viewBox="0 0 200 200" id="analog-dial">
+                <defs>
+                  <linearGradient id="dialRimGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+                    <stop offset="50%" stop-color="#818cf8" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#c084fc" stop-opacity="0.9"/>
+                  </linearGradient>
+                  <filter id="glowEffect" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <circle cx="100" cy="100" r="94" class="dial-outer-track" />
+                <circle cx="100" cy="100" r="92" class="dial-rim" stroke="url(#dialRimGradient)" />
+                <circle cx="100" cy="100" r="84" class="dial-inner-face" />
+
+                <!-- 12 小時刻度 -->
+                <g class="dial-hour-ticks">
+                  <line x1="100" y1="18" x2="100" y2="30" class="tick major-tick" />
+                  <line x1="141" y1="29" x2="135" y2="39" class="tick" />
+                  <line x1="171" y1="59" x2="161" y2="65" class="tick" />
+                  <line x1="182" y1="100" x2="170" y2="100" class="tick major-tick" />
+                  <line x1="171" y1="141" x2="161" y2="135" class="tick" />
+                  <line x1="141" y1="171" x2="135" y2="161" class="tick" />
+                  <line x1="100" y1="182" x2="100" y2="170" class="tick major-tick" />
+                  <line x1="59" y1="171" x2="65" y2="161" class="tick" />
+                  <line x1="29" y1="141" x2="39" y2="135" class="tick" />
+                  <line x1="18" y1="100" x2="30" y2="100" class="tick major-tick" />
+                  <line x1="29" y1="59" x2="39" y2="65" class="tick" />
+                  <line x1="59" y1="29" x2="65" y2="39" class="tick" />
+                </g>
+
+                <!-- 時針 / 分針 / 秒針 -->
+                <line id="analog-hour-hand" x1="100" y1="100" x2="100" y2="52" class="clock-hand hour-hand" />
+                <line id="analog-minute-hand" x1="100" y1="100" x2="100" y2="36" class="clock-hand minute-hand" />
+                <g id="analog-second-hand-group">
+                  <line id="analog-second-hand" x1="100" y1="116" x2="100" y2="26" class="clock-hand second-hand" filter="url(#glowEffect)" />
+                  <circle cx="100" cy="116" r="3.5" class="second-hand-counterweight" />
+                </g>
+                <circle cx="100" cy="100" r="5" class="dial-center-pin" />
+                <circle cx="100" cy="100" r="2" class="dial-center-core" />
+              </svg>
+            </div>
+
+            <!-- 數位大字顯示 -->
+            <div class="digital-time-wrapper">
+              <div class="digital-time-display" id="main-digital-time">
+                <span class="digits hour" id="clock-hours">--</span>
+                <span class="time-colon">:</span>
+                <span class="digits min" id="clock-minutes">--</span>
+                <span class="time-colon">:</span>
+                <span class="digits sec" id="clock-seconds">--</span>
+                <span class="digits ms-counter" id="clock-ms">.000</span>
+                <span class="meridiem-tag" id="clock-meridiem">24H</span>
+              </div>
+              <div class="digital-tz-badge" id="timezone-string">UTC+08:00 (Asia/Taipei)</div>
+            </div>
+          </div>
+
+          <!-- UNIX & ISO 遙測時間戳卡片 -->
+          <div class="telemetry-grid">
+            <div class="telemetry-card">
+              <div class="telemetry-title">
+                <span>UNIX Epoch Timestamp (秒)</span>
+                <button class="mini-copy-btn" id="copy-unix-btn" title="複製 UNIX 時間戳">複製</button>
+              </div>
+              <code class="telemetry-code" id="unix-timestamp">0000000000</code>
+            </div>
+
+            <div class="telemetry-card">
+              <div class="telemetry-title">
+                <span>標準 ISO 8601 時間戳記</span>
+                <button class="mini-copy-btn" id="copy-iso-btn" title="複製 ISO 8601">複製</button>
+              </div>
+              <code class="telemetry-code" id="iso-timestamp">2026-09-16T10:00:00+08:00</code>
+            </div>
+          </div>
+
+          <!-- 世界主要城市即時時區矩陣 -->
+          <div class="world-clocks-section">
+            <div class="world-clocks-label">全球科技樞紐即時對照：</div>
+            <div class="world-clocks-grid">
+              <div class="world-clock-chip" id="wc-taipei">
+                <span class="wc-city">台北 (Taipei)</span>
+                <span class="wc-zone">UTC+8</span>
+                <span class="wc-time" id="wc-time-taipei">--:--</span>
+              </div>
+              <div class="world-clock-chip" id="wc-tokyo">
+                <span class="wc-city">東京 (Tokyo)</span>
+                <span class="wc-zone">UTC+9</span>
+                <span class="wc-time" id="wc-time-tokyo">--:--</span>
+              </div>
+              <div class="world-clock-chip" id="wc-london">
+                <span class="wc-city">倫敦 (London)</span>
+                <span class="wc-zone">UTC+1</span>
+                <span class="wc-time" id="wc-time-london">--:--</span>
+              </div>
+              <div class="world-clock-chip" id="wc-ny">
+                <span class="wc-city">紐約 (New York)</span>
+                <span class="wc-zone">UTC-4</span>
+                <span class="wc-time" id="wc-time-ny">--:--</span>
+              </div>
+              <div class="world-clock-chip" id="wc-sf">
+                <span class="wc-city">舊金山 (SF)</span>
+                <span class="wc-zone">UTC-7</span>
+                <span class="wc-time" id="wc-time-sf">--:--</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="session-uptime-bar">
+            <span>頁面累計已連線運行：</span>
+            <strong id="session-uptime-counter">0 秒</strong>
+          </div>
+        </div>
+
+        <!-- Tab 2: 番茄鐘專注計時器 (Pomodoro Focus Timer) -->
+        <div class="tab-panel" id="panel-pomodoro" role="tabpanel">
+          <div class="pomodoro-station">
+            
+            <!-- 模式切換：專注 25m / 短休 5m / 長休 15m -->
+            <div class="pomo-mode-selector">
+              <button class="pomo-mode-btn active" data-pomo-type="work" data-minutes="25">專注工作 (25分)</button>
+              <button class="pomo-mode-btn" data-pomo-type="short" data-minutes="5">短暫休息 (5分)</button>
+              <button class="pomo-mode-btn" data-pomo-type="long" data-minutes="15">深度放鬆 (15分)</button>
+            </div>
+
+            <!-- 圓環進度與大字倒數 -->
+            <div class="pomo-circle-wrapper">
+              <svg class="pomo-svg-ring" viewBox="0 0 240 240">
+                <circle cx="120" cy="120" r="105" class="pomo-track-circle" />
+                <circle cx="120" cy="120" r="105" class="pomo-progress-circle" id="pomo-progress-circle" />
+              </svg>
+
+              <div class="pomo-inner-content">
+                <div class="pomo-countdown-text" id="pomo-display">25:00</div>
+                <div class="pomo-stage-badge" id="pomo-stage-label">專注中 · FOCUS</div>
+              </div>
+            </div>
+
+            <!-- 控制按鈕組 -->
+            <div class="pomo-controls-row">
+              <button class="btn btn-primary btn-pomo" id="pomo-toggle-btn">
+                <span id="pomo-toggle-icon">▶</span>
+                <span id="pomo-toggle-text">開始專注</span>
+              </button>
+              <button class="btn btn-secondary btn-pomo" id="pomo-reset-btn">
+                <span>重設</span>
+              </button>
+              <button class="btn btn-secondary btn-icon-only" id="pomo-sound-btn" title="測試 / 切換提示鈴聲">
+                <span>🔔</span>
+              </button>
+            </div>
+
+            <!-- 今日累計專注次數 -->
+            <div class="pomo-stats-row">
+              <span>本次連線已完成專注週期：</span>
+              <strong id="pomo-cycles-count">0 次 🍅</strong>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tab 3: 跨時區會議換算器 (World Meeting Planner) -->
+        <div class="tab-panel" id="panel-planner" role="tabpanel">
+          <div class="planner-station">
+            <div class="planner-intro">
+              <p>拖曳滑桿選擇台北基準時間，即時比對全球主要城市的對應時間與上班工作窗口：</p>
+              <button class="btn btn-secondary btn-sm" id="planner-reset-btn">回到當前時間</button>
+            </div>
+
+            <!-- 時間滑動器 -->
+            <div class="planner-slider-block">
+              <div class="slider-header-row">
+                <span class="slider-label">基準時間 (台北 UTC+8)：</span>
+                <strong class="slider-val-highlight" id="planner-selected-time">10:00 上午</strong>
+              </div>
+              <input type="range" min="0" max="23" value="10" class="time-range-slider" id="planner-slider">
+              <div class="slider-ticks">
+                <span>00:00</span>
+                <span>06:00</span>
+                <span>12:00</span>
+                <span>18:00</span>
+                <span>23:00</span>
+              </div>
+            </div>
+
+            <!-- 各城市時間對照表 -->
+            <div class="planner-cards-list" id="planner-cards-container">
+              <!-- JS 動態渲染或更新各城市卡片 -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>© 2026 <strong>Yian Chen (陳奕安)</strong> · 極簡個人空間與即時時間中心</p>
+      </div>
+      <div class="footer-right">
+        <span class="footer-badge">核心狀態：<strong class="green-text">全系統運作中</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
